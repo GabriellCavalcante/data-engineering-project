@@ -1,0 +1,33 @@
+app:
+  name: "replace-with-project-name"
+
+spark:
+  master: null
+  config: {}
+
+paths:
+  input: "s3://replace-with-bucket/input/"
+  output: "s3://replace-with-bucket/output/"
+
+data_io:
+  input_format: "parquet"
+  output_format: "parquet"
+  reader_options: {}
+  writer_options: {}
+  write_mode: "overwrite"
+
+api:
+  base_url: "https://replace-with-api-base-url"
+  timeout_seconds: 30
+  headers: {}
+
+load_control:
+  enabled: false
+  endpoints:
+    can_start: "/load-control/can-start"
+    start: "/load-control/start"
+    success: "/load-control/success"
+    failure: "/load-control/failure"
+  response_fields:
+    can_start: "can_start"
+    run_id: "run_id"

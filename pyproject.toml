@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "data-engineering-project"
+version = "0.1.0"
+description = "Template genérico para pipelines de Engenharia de Dados com Python e PySpark"
+requires-python = ">=3.10"
+
+dependencies = [
+    "PyYAML",
+    "requests",
+    "boto3",
+]
+
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+    "pyspark",
+    "build",
+]
+
+
+[project.scripts]
+run-data-pipeline = "company_name.project_name.batch.main:main"
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+src = ["src", "tests"]
+
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+]
